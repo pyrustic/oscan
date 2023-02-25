@@ -16,7 +16,10 @@ No description
 [match](#match) &nbsp;&nbsp; [scan](#scan)
 
 ## match
-pattern = string, or an enum of regex patterns
+pattern is one of:
+- string;
+- list or tuple of 2-tuples (name, regex);
+- an enum of regex patterns
 
 
 
@@ -32,7 +35,10 @@ pattern = string, or an enum of regex patterns
 
 
 ## scan
-pattern = string or an enum of regex patterns
+pattern is one of:
+- string;
+- list or tuple of 2-tuples (name, regex);
+- an enum of regex patterns
 
 
 

@@ -5,9 +5,16 @@ from oscan.error import Error
 
 
 def scan(text, pattern):
-    """pattern = string or an enum of regex patterns"""
+    """
+    pattern is one of:
+    - string;
+    - list or tuple of 2-tuples (name, regex);
+    - an enum of regex patterns
+    """
     if isinstance(pattern, str):
         specification = [("", pattern)]
+    elif isinstance(pattern, list) or isinstance(pattern, tuple):
+        specification = pattern
     else:
         specification = util.create_specification(pattern)
         pattern = "|".join("(?P<{}>{})".format(name, regex)
@@ -18,9 +25,16 @@ def scan(text, pattern):
 
 
 def match(text, pattern):
-    """pattern = string, or an enum of regex patterns"""
+    """
+    pattern is one of:
+    - string;
+    - list or tuple of 2-tuples (name, regex);
+    - an enum of regex patterns
+    """
     if isinstance(pattern, str):
         specification = [("", pattern)]
+    elif isinstance(pattern, list) or isinstance(pattern, tuple):
+        specification = pattern
     else:
         specification = util.create_specification(pattern)
     for name, regex in specification:
